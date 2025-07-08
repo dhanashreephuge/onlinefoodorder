@@ -16,7 +16,7 @@ import com.stripe.exception.StripeException;
 @Service
 public class PaymentServiceImpl implements PaymentService{
 	
-	@Value("${strip.api.key}")
+	@Value("${stripe.api.key}")
 	private String stripeSecretKey;
 
 	@Override
@@ -25,12 +25,12 @@ public class PaymentServiceImpl implements PaymentService{
 
 		SessionCreateParams params= SessionCreateParams.builder().addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
 				.setMode(SessionCreateParams.Mode.PAYMENT)
-				.setSuccessUrl("http://localhost:3000/payment/success"+order.getId())
+				.setSuccessUrl("http://localhost:3000/payment/success/"+order.getId())
 				.setCancelUrl("http://localhost:3000/payment/fail")
 				.addLineItem(SessionCreateParams.LineItem.builder()
 						.setQuantity(1L).setPriceData(SessionCreateParams.LineItem.PriceData.builder()
 								.setCurrency("usd")
-								.setUnitAmount((long) order.getTotalAmount()*100)
+								.setUnitAmount((long) order.getTotalPrice()*100)
 								.setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
 										.setName("yummy food")
 										.build())

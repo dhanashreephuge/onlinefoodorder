@@ -3,7 +3,7 @@ import { Modal} from '@mui/material'
 import { useLocation, useNavigate} from 'react-router-dom'
 import { style } from '../Cart/Cart';
 import RegisterForm from './RegisterForm';
-import LoginForm from './Login.Form';
+import LoginForm from './LoginForm';
 import { Box } from '@mui/material';
 
 
